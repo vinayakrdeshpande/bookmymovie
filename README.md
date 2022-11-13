@@ -16,4 +16,11 @@ To build the project:
    
 
 To run the project:
-  gradle bootrun
+  gradle bootrun 
+  
+For swagger:
+  http://localhost:9091/swagger.html
+  
+  
+  Note: Application running on port 9091 can be changed in properties.
+  
