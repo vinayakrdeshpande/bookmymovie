@@ -9,6 +9,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
 
@@ -25,24 +26,24 @@ import lombok.Data;
 public class Users {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @JsonIgnore
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "usersseq")
+    @SequenceGenerator(name = "usersseq", sequenceName = "users_seq")
     private long user_id;
-    
+
     @NotNull
     private String name;
-    
+
     @Email
     private String email;
-    
+
     private String address;
-    
+
     private String pincode;
-    
+
     private String mobileNo;
-        
+
     private String userType;
-    
+
     @JsonIgnore
     private Timestamp createdDate;
 }

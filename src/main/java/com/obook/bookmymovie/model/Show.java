@@ -3,15 +3,13 @@
  */
 package com.obook.bookmymovie.model;
 
-
 import java.sql.Timestamp;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import javax.persistence.SequenceGenerator;
 
 import lombok.Data;
 
@@ -23,21 +21,21 @@ import lombok.Data;
 @Entity
 public class Show {
 
-	@Id
-	@JsonIgnore
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long show_id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "showseq")
+    @SequenceGenerator(name = "showseq", sequenceName = "show_seq")
+    private long show_id;
 
-	private String movie;
-	
-	private Timestamp startTime;
+    private String movie;
 
-	private Timestamp endTime;
+    private Timestamp startTime;
 
-	private String language;
-	
-	private String genere;
-	
-	private int price;
+    private Timestamp endTime;
+
+    private String language;
+
+    private String genere;
+
+    private int price;
 
 }

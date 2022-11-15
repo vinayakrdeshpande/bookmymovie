@@ -11,8 +11,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import javax.persistence.SequenceGenerator;
 
 import lombok.Data;
 
@@ -24,20 +23,20 @@ import lombok.Data;
 @Entity
 public class TheatreShow {
 
-	@Id
-	@JsonIgnore
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long theatreshow_id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "theatreshowseq")
+    @SequenceGenerator(name = "theatreshowseq", sequenceName = "theatreshow_seq")
+    private long theatreshow_id;
 
-	private Date fromdate;
-	
-	private Date tillDate;
-	
-	@ManyToOne
-	@JoinColumn(name = "theatre_id", referencedColumnName = "theatre_id", nullable = false)
-	private Theatre theatre;
+    private Date fromdate;
 
-	@ManyToOne
-	@JoinColumn(name = "show_id", referencedColumnName = "show_id", nullable = false)
-	private Show show;
+    private Date tillDate;
+
+    @ManyToOne
+    @JoinColumn(name = "theatre_id", referencedColumnName = "theatre_id", nullable = false)
+    private Theatre theatre;
+
+    @ManyToOne
+    @JoinColumn(name = "show_id", referencedColumnName = "show_id", nullable = false)
+    private Show show;
 }

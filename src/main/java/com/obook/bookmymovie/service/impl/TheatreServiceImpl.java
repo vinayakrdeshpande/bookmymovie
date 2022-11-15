@@ -32,15 +32,16 @@ public class TheatreServiceImpl implements TheatreService {
 	Validator validator;
 	
 	@Override
-	public void saveTheatre(Theatre theatre) {
+	public Theatre saveTheatre(Theatre theatre) {
 
 		MapBindingResult errors = new MapBindingResult(new HashMap<String,String>(), Map.class.getName());
 		validator.validate(theatre, errors);
 		if(errors.hasErrors()) {
 			log.error(errors.toString());
+			return null;
 		}
 		else {
-			theatreRepository.save(theatre);
+			return theatreRepository.save(theatre);
 		}
 		
 	}

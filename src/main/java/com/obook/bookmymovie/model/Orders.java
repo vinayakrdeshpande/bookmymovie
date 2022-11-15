@@ -11,8 +11,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import javax.persistence.SequenceGenerator;
 
 import lombok.Data;
 
@@ -25,8 +24,8 @@ import lombok.Data;
 public class Orders {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @JsonIgnore
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "ordersseq")
+    @SequenceGenerator(name = "ordersseq", sequenceName = "orders_seq")
     private long order_id;
 
     private Timestamp bookedDate;

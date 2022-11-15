@@ -4,5 +4,5 @@ import com.obook.bookmymovie.model.Theatre;
 
 public interface TheatreService {
 
-	void saveTheatre(final Theatre theatre);
+    Theatre saveTheatre(Theatre theatre);
 }
