@@ -3,16 +3,16 @@ package com.obook.bookmymovie.repositories;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import com.obook.bookmymovie.model.Show;
+import com.obook.bookmymovie.model.Users;
 
 /**
- * This interface is for CRUD operations for shows that will be mapped to
- * theatre.
+ * This is basic user interface for adding users those are responsible for
+ * bookings.
  * 
  * @author vishr
  *
  */
 @Repository
-public interface ShowRepository extends JpaRepository<Show, Long> {
+public interface UsersRepository extends JpaRepository<Users, Long> {
 
 }
