@@ -25,12 +25,14 @@ public class Theatre {
 	@Id
 	@JsonIgnore
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long id;
+	private long theatre_id;
 
 	private String name;
 
 	private String address;
 
+	private String state;
+	
 	private String city;
 
 	private long pincode;

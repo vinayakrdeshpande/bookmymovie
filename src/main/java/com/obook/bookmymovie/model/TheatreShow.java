@@ -3,6 +3,8 @@
  */
 package com.obook.bookmymovie.model;
 
+import java.sql.Date;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -25,13 +27,17 @@ public class TheatreShow {
 	@Id
 	@JsonIgnore
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long id;
+	private long theatreshow_id;
 
+	private Date fromdate;
+	
+	private Date tillDate;
+	
 	@ManyToOne
-	@JoinColumn(name = "theatre_id", referencedColumnName = "id", nullable = false)
+	@JoinColumn(name = "theatre_id", referencedColumnName = "theatre_id", nullable = false)
 	private Theatre theatre;
 
 	@ManyToOne
-	@JoinColumn(name = "show_id", referencedColumnName = "id", nullable = false)
+	@JoinColumn(name = "show_id", referencedColumnName = "show_id", nullable = false)
 	private Show show;
 }

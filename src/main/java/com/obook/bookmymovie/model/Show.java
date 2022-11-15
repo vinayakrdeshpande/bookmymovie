@@ -26,7 +26,7 @@ public class Show {
 	@Id
 	@JsonIgnore
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long id;
+	private long show_id;
 
 	private String movie;
 	
@@ -34,6 +34,10 @@ public class Show {
 
 	private Timestamp endTime;
 
+	private String language;
+	
+	private String genere;
+	
 	private int price;
 
 }
