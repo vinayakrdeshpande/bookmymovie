@@ -12,6 +12,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
 
 import lombok.Data;
 
@@ -21,11 +22,12 @@ import lombok.Data;
  */
 @Data
 @Entity
+@Table(name = "theatreshow")
 public class TheatreShow {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "theatreshowseq")
-    @SequenceGenerator(name = "theatreshowseq", sequenceName = "theatreshow_seq")
+    @SequenceGenerator(name = "theatreshowseq", sequenceName = "theatreshow_seq", allocationSize = 1)
     private long theatreshow_id;
 
     private Date fromdate;

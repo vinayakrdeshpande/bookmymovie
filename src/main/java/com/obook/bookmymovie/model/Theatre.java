@@ -8,6 +8,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonProperty.Access;
 
 import lombok.Data;
 
@@ -19,11 +23,13 @@ import lombok.Data;
 
 @Data
 @Entity
+@Table(name = "theatre")
 public class Theatre {
 
     @Id
+    @JsonProperty(access = Access.READ_ONLY)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "theatreseq")
-    @SequenceGenerator(name = "theatreseq", sequenceName = "theatre_seq")
+    @SequenceGenerator(name = "theatreseq", sequenceName = "theatre_seq", allocationSize = 1)
     private long theatre_id;
 
     private String name;

@@ -1,17 +1,26 @@
 CREATE SEQUENCE IF NOT EXISTS theatre_seq
-START WITH 1
-INCREMENT BY 1;
+ START WITH 100
+  INCREMENT BY 1
+  NO MAXVALUE
+  NO MINVALUE
+  CACHE 1;
 
 CREATE SEQUENCE IF NOT EXISTS show_seq
-START WITH 1
-INCREMENT BY 1;
+ START WITH 100
+  INCREMENT BY 1
+  NO MAXVALUE
+  NO MINVALUE
+  CACHE 1;
 
 CREATE SEQUENCE IF NOT EXISTS theatreshow_seq
-START WITH 1
-INCREMENT BY 1;
+ START WITH 100
+  INCREMENT BY 1
+  NO MAXVALUE
+  NO MINVALUE
+  CACHE 1;
 
 CREATE TABLE theatre(
-  theatre_id bigint DEFAULT nextval('theatre_seq'),
+  theatre_id INTEGER DEFAULT nextval('theatre_seq'),
   name VARCHAR(100) NOT NULL,
   address VARCHAR(500) NOT NULL,
   state VARCHAR(50) NOT NULL,
@@ -22,7 +31,7 @@ CREATE TABLE theatre(
 );
 
 CREATE TABLE show(
-  show_id bigint DEFAULT nextval('show_seq'),
+  show_id INTEGER DEFAULT nextval('show_seq'),
   movie VARCHAR(150) NOT NULL,
   startTime timestamp NOT NULL,
   endTime timestamp NOT NULL,
@@ -33,11 +42,11 @@ CREATE TABLE show(
 );
 
 CREATE TABLE theatreshow(
-  theatreshow_id bigint DEFAULT nextval('theatreshow_seq'),
+  theatreshow_id INTEGER DEFAULT nextval('theatreshow_seq'),
   fromDate Date NOT NULL,
   tillDate Date NOT NULL,
-  theatre_id bigint NOT NULL,
-  show_id bigint NOT NULL,
+  theatre_id INTEGER NOT NULL,
+  show_id INTEGER NOT NULL,
   PRIMARY KEY (theatreshow_id),
   FOREIGN KEY (theatre_id) REFERENCES theatre(theatre_id)
     ON DELETE CASCADE,

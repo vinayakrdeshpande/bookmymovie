@@ -10,10 +10,13 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonProperty.Access;
 
 import lombok.Data;
 
@@ -23,11 +26,13 @@ import lombok.Data;
  */
 @Data
 @Entity
+@Table(name = "users")
 public class Users {
 
     @Id
+    @JsonProperty(access = Access.READ_ONLY)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "usersseq")
-    @SequenceGenerator(name = "usersseq", sequenceName = "users_seq")
+    @SequenceGenerator(name = "usersseq", sequenceName = "users_seq", allocationSize = 1)
     private long user_id;
 
     @NotNull
