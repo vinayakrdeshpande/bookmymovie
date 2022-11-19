@@ -3,7 +3,7 @@ package com.obook.bookmymovie.repositories;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import com.obook.bookmymovie.model.Users;
+import com.obook.bookmymovie.model.User;
 
 /**
  * This is basic user interface for adding users those are responsible for
@@ -13,6 +13,6 @@ import com.obook.bookmymovie.model.Users;
  *
  */
 @Repository
-public interface UsersRepository extends JpaRepository<Users, Long> {
+public interface UsersRepository extends JpaRepository<User, Long> {
 
 }

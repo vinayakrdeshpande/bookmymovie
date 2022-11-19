@@ -4,6 +4,6 @@ import com.obook.bookmymovie.model.Show;
 
 public interface ShowService {
 
-	void saveShow(final Show show);
+    Show saveShow(final Show show);
 
 }

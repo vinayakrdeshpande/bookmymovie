@@ -27,7 +27,7 @@ import lombok.Data;
 @Data
 @Entity
 @Table(name = "users")
-public class Users {
+public class User {
 
     @Id
     @JsonProperty(access = Access.READ_ONLY)

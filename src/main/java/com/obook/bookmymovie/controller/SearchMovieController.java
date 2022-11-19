@@ -29,6 +29,8 @@ public class SearchMovieController {
     public List<TheatreShow> findMovie(@RequestParam(value = "city", required = false) String city,
             @RequestParam(value = "genere", required = false) String genere,
             @RequestParam(value = "language", required = false) String language) {
+        
+        log.debug("Add Search request city: {}, genere: {}, language: {}", city,genere,language);
         List<TheatreShow> theatreShowLst = theaterShowService.searchShows(city, genere, language);
         return theatreShowLst;
     }

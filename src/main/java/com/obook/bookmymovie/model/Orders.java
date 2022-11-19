@@ -41,7 +41,7 @@ public class Orders {
 
     @ManyToOne
     @JoinColumn(name = "user_id", referencedColumnName = "user_id", nullable = false)
-    private Users users;
+    private User users;
 
     @ManyToOne
     @JoinColumn(name = "theatreshow_id", referencedColumnName = "theatreshow_id", nullable = false)

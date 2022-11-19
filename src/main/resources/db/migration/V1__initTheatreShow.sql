@@ -33,6 +33,7 @@ CREATE TABLE theatre(
 CREATE TABLE show(
   show_id INTEGER DEFAULT nextval('show_seq'),
   movie VARCHAR(150) NOT NULL,
+  releaseDate timestamp NOT NULL,
   startTime timestamp NOT NULL,
   endTime timestamp NOT NULL,
   language VARCHAR(100) NOT NULL,
@@ -43,8 +44,7 @@ CREATE TABLE show(
 
 CREATE TABLE theatreshow(
   theatreshow_id INTEGER DEFAULT nextval('theatreshow_seq'),
-  fromDate Date NOT NULL,
-  tillDate Date NOT NULL,
+  theatreShowDate timestamp NOT NULL,
   theatre_id INTEGER NOT NULL,
   show_id INTEGER NOT NULL,
   PRIMARY KEY (theatreshow_id),

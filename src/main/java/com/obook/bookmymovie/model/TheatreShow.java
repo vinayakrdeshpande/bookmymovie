@@ -14,6 +14,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import lombok.Data;
 
 /**
@@ -29,10 +31,12 @@ public class TheatreShow {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "theatreshowseq")
     @SequenceGenerator(name = "theatreshowseq", sequenceName = "theatreshow_seq", allocationSize = 1)
     private long theatreshow_id;
-
-    private Date fromdate;
-
-    private Date tillDate;
+    
+    /**
+     * This will tell which date show will be displayed in theatre.
+     */
+    @DateTimeFormat(pattern = "${yyyy-MM-dd}")
+    private Date theatreShowDate;
 
     @ManyToOne
     @JoinColumn(name = "theatre_id", referencedColumnName = "theatre_id", nullable = false)

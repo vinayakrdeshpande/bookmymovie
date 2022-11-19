@@ -1,3 +1,6 @@
+/**
+ * 
+ */
 package com.obook.bookmymovie.controller;
 
 import javax.validation.Valid;
@@ -9,8 +12,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.obook.bookmymovie.model.Orders;
-import com.obook.bookmymovie.service.OrdersService;
+import com.obook.bookmymovie.model.TheatreShow;
+import com.obook.bookmymovie.service.TheatreShowService;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -20,18 +23,16 @@ import lombok.extern.slf4j.Slf4j;
  */
 @Slf4j
 @RestController
-public class addOrderController {
+public class TheatreShowController {
 
     @Autowired
-    OrdersService orderService;
+    TheatreShowService theatreShowService;
 
-    @PostMapping("/bookMovie")
+    @PostMapping("/addTheatreShow")
     @ResponseStatus(HttpStatus.CREATED)
-    public Orders bookMovie(@Valid @RequestBody Orders order) {
-        log.debug("Add order request {}", order);
-        Orders savedOrder = orderService.saveOrder(order);
-        log.debug("Order id {}", order.getOrder_id());
-        return savedOrder;
+    public TheatreShow addTheatreShow(@Valid @RequestBody TheatreShow theatreShow) {
+        log.debug("Add Theatre and show request {}", theatreShow);
+        TheatreShow theatreShowObj = theatreShowService.saveTheatreShow(theatreShow);
+        return theatreShowObj;
     }
-
 }

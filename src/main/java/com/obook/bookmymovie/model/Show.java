@@ -3,7 +3,7 @@
  */
 package com.obook.bookmymovie.model;
 
-import java.sql.Timestamp;
+import java.sql.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -12,6 +12,10 @@ import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.format.annotation.DateTimeFormat;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonProperty.Access;
 
@@ -34,9 +38,16 @@ public class Show {
 
     private String movie;
 
-    private Timestamp startTime;
+    @DateTimeFormat(pattern = "${yyyy-MM-dd}")
+    private Date releaseDate;
+    
+    @Value("00:00")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "HH:mm")
+    private String startTime;
 
-    private Timestamp endTime;
+    @Value("03:00")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "HH:mm")
+    private String endTime;
 
     private String language;
 

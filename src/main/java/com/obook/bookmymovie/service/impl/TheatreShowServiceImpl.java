@@ -27,9 +27,9 @@ public class TheatreShowServiceImpl implements TheatreShowService {
     SearchTheatreShowRespImpl searcchImpl;
 
     @Override
-    public void saveTheatreShow(TheatreShow theatreShow) {
-        // TODO Auto-generated method stub
-
+    public TheatreShow saveTheatreShow(TheatreShow theatreShow) {
+        TheatreShow theatreShowObj = theatreShowRepository.save(theatreShow);
+        return theatreShowObj;
     }
 
     @Override

@@ -6,7 +6,7 @@ import com.obook.bookmymovie.model.TheatreShow;
 
 public interface TheatreShowService {
 
-    void saveTheatreShow(final TheatreShow theatreShow);
+    TheatreShow saveTheatreShow(final TheatreShow theatreShow);
 
     List<TheatreShow> searchShows(final String city, final String genere, final String language);
 }
