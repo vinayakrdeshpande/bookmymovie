@@ -31,20 +31,22 @@ public class SearchTheatreShowRespImpl {
         StringBuilder queryBuilder = new StringBuilder();
         queryBuilder.append("select ts from TheatreShow ts ");
 
-        if (!city.isEmpty()) {
+        if (city != null) {
             whereCause.add(" ts.theatre.city =:theatre ");
-            paramaterMap.put("city", city);
+            paramaterMap.put("city", city.toUpperCase());
         }
-        if (!genere.isEmpty()) {
+        if (genere != null) {
             whereCause.add(" ts.show.genere =:genere ");
-            paramaterMap.put("genere", genere);
+            paramaterMap.put("genere", genere.toUpperCase());
         }
         if (language != null) {
             whereCause.add(" ts.show.language =:language ");
-            paramaterMap.put("language", language);
+            paramaterMap.put("language", language.toUpperCase());
         }
 
+        if(!whereCause.isEmpty())
         queryBuilder.append(" where " + StringUtils.join(whereCause, " and "));
+        
         TypedQuery<TheatreShow> jpaQuery = entityManager.createQuery(queryBuilder.toString(), TheatreShow.class);
 
         for (String key : paramaterMap.keySet()) {
