@@ -27,7 +27,7 @@ public class ShowController {
 
     @PostMapping("/addShow")
     @ResponseStatus(HttpStatus.CREATED)
-    public Show addShow(@Valid @RequestBody Show show) {
+    public Show addShow(@RequestBody Show show) {
         log.debug("Add Show request {}", show);
         Show showObj = showService.saveShow(show);
         return showObj;

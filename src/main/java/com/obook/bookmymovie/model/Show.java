@@ -5,6 +5,7 @@ package com.obook.bookmymovie.model;
 
 import java.sql.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -36,23 +37,26 @@ public class Show {
     @SequenceGenerator(name = "showseq", sequenceName = "show_seq", allocationSize = 1)
     private long show_id;
 
+    @Column(name="movie")
     private String movie;
 
     @DateTimeFormat(pattern = "${yyyy-MM-dd}")
+    @Column(name="releasedate")
     private Date releaseDate;
     
-    @Value("00:00")
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "HH:mm")
+    @Column(name="starttime")
     private String startTime;
 
-    @Value("03:00")
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "HH:mm")
+    @Column(name="endtime")
     private String endTime;
 
+    @Column(name="language")
     private String language;
 
+    @Column(name="genere")
     private String genere;
 
+    @Column(name="price")
     private int price;
 
 }
