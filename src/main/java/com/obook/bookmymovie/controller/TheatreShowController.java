@@ -3,12 +3,13 @@
  */
 package com.obook.bookmymovie.controller;
 
-import javax.validation.Valid;
+import java.sql.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -30,9 +31,13 @@ public class TheatreShowController {
 
     @PostMapping("/addTheatreShow")
     @ResponseStatus(HttpStatus.CREATED)
-    public TheatreShow addTheatreShow(@Valid @RequestBody TheatreShow theatreShow) {
-        log.debug("Add Theatre and show request {}", theatreShow);
-        TheatreShow theatreShowObj = theatreShowService.saveTheatreShow(theatreShow);
+    public TheatreShow addTheatreShow(
+            @RequestParam("theatreShowDate") 
+            @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date theatreShowDate,
+            @RequestParam long theatreid,
+            @RequestParam long showid) {
+        log.debug("Add Theatre and show request Date:{} theatreid:{} showid:{}", theatreShowDate, theatreid, showid);
+        TheatreShow theatreShowObj = theatreShowService.saveTheatreShow(theatreShowDate, theatreid, showid);
         return theatreShowObj;
     }
 }

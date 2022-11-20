@@ -5,6 +5,7 @@ package com.obook.bookmymovie.model;
 
 import java.sql.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -36,6 +37,7 @@ public class TheatreShow {
      * This will tell which date show will be displayed in theatre.
      */
     @DateTimeFormat(pattern = "${yyyy-MM-dd}")
+    @Column(name="theatreshowdate")
     private Date theatreShowDate;
 
     @ManyToOne
