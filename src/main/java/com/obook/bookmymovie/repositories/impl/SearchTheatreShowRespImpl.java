@@ -1,14 +1,15 @@
 package com.obook.bookmymovie.repositories.impl;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.persistence.EntityManager;
-import javax.persistence.criteria.CriteriaBuilder;
-import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.Predicate;
-import javax.persistence.criteria.Root;
+import javax.persistence.TypedQuery;
 
+import org.apache.commons.lang3.StringUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.obook.bookmymovie.model.TheatreShow;
@@ -20,26 +21,36 @@ import com.obook.bookmymovie.model.TheatreShow;
 @Repository
 public class SearchTheatreShowRespImpl {
 
-    EntityManager enityManager;
+    @Autowired
+    private EntityManager entityManager;
 
     public List<TheatreShow> getMovieToBook(String city, String genere, String language) {
-        CriteriaBuilder cb = enityManager.getCriteriaBuilder();
-        CriteriaQuery<TheatreShow> cq = cb.createQuery(TheatreShow.class);
+        Map<String, Object> paramaterMap = new HashMap<String, Object>();
+        List<String> whereCause = new ArrayList<String>();
 
-        Root<TheatreShow> theatreRoot = cq.from(TheatreShow.class);
-        List<Predicate> predicates = new ArrayList<>();
+        StringBuilder queryBuilder = new StringBuilder();
+        queryBuilder.append("select ts from TheatreShow ts ");
 
-        if (city != null) {
-            predicates.add(cb.equal(theatreRoot.get("city"), city));
+        if (!city.isEmpty()) {
+            whereCause.add(" ts.theatre.city =:theatre ");
+            paramaterMap.put("city", city);
         }
-        if (genere != null) {
-            predicates.add(cb.equal(theatreRoot.get("genere"), genere));
+        if (!genere.isEmpty()) {
+            whereCause.add(" ts.show.genere =:genere ");
+            paramaterMap.put("genere", genere);
         }
         if (language != null) {
-            predicates.add(cb.equal(theatreRoot.get("language"), language));
+            whereCause.add(" ts.show.language =:language ");
+            paramaterMap.put("language", language);
         }
-        cq.where(predicates.toArray(new Predicate[0]));
 
-        return enityManager.createQuery(cq).getResultList();
+        queryBuilder.append(" where " + StringUtils.join(whereCause, " and "));
+        TypedQuery<TheatreShow> jpaQuery = entityManager.createQuery(queryBuilder.toString(), TheatreShow.class);
+
+        for (String key : paramaterMap.keySet()) {
+            jpaQuery.setParameter(key, paramaterMap.get(key));
+        }
+
+        return jpaQuery.getResultList();
     }
 }
