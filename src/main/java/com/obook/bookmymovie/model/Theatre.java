@@ -3,6 +3,7 @@
  */
 package com.obook.bookmymovie.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -32,15 +33,21 @@ public class Theatre {
     @SequenceGenerator(name = "theatreseq", sequenceName = "theatre_seq", allocationSize = 1)
     private long theatre_id;
 
+    @Column(name = "name")
     private String name;
 
+    @Column(name = "address")
     private String address;
 
+    @Column(name = "state")
     private String state;
 
+    @Column(name = "city")
     private String city;
 
+    @Column(name = "pincode", length = 6)
     private long pincode;
 
+    @Column(name = "seats")
     private int seats;
 }

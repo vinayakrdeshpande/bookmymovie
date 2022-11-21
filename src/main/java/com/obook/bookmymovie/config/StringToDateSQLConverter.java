@@ -1,6 +1,4 @@
-/**
- * 
- */
+
 package com.obook.bookmymovie.config;
 
 import java.sql.Date;

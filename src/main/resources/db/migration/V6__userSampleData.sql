@@ -1,0 +1,2 @@
+
+INSERT INTO public.users (name, address, state, city, pincode, mobileno, email, usertype) VALUES ( 'vinayak', 'pune', 'maharashtra', 'pune', '411041', '9876543210', 'vinayakrdeshpande@gmail.com', 'Regular');

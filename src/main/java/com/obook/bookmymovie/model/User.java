@@ -5,6 +5,7 @@ package com.obook.bookmymovie.model;
 
 import java.sql.Timestamp;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -33,22 +34,35 @@ public class User {
     @JsonProperty(access = Access.READ_ONLY)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "usersseq")
     @SequenceGenerator(name = "usersseq", sequenceName = "users_seq", allocationSize = 1)
-    private long user_id;
+    private long users_id;
 
     @NotNull
+    @Column(name = "name")
     private String name;
 
     @Email
+    @Column(name = "email")
     private String email;
 
+    @Column(name = "address")
     private String address;
 
+    @Column(name = "state")
+    private String state;
+
+    @Column(name = "city")
+    private String city;
+
+    @Column(name = "pincode", length = 6)
     private String pincode;
 
+    @Column(name = "mobileno", length = 10)
     private String mobileNo;
 
+    @Column(name = "usertype")
     private String userType;
 
     @JsonIgnore
+    @Column(name = "createddate")
     private Timestamp createdDate;
 }

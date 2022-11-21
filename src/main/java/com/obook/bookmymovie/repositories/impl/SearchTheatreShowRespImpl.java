@@ -32,7 +32,7 @@ public class SearchTheatreShowRespImpl {
         queryBuilder.append("select ts from TheatreShow ts ");
 
         if (city != null) {
-            whereCause.add(" ts.theatre.city =:theatre ");
+            whereCause.add(" ts.theatre.city =:city ");
             paramaterMap.put("city", city.toUpperCase());
         }
         if (genere != null) {

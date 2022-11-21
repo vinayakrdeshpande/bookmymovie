@@ -20,18 +20,18 @@ CREATE TABLE users(
   state VARCHAR(50) NOT NULL,
   city VARCHAR(50) NOT NULL,
   pincode VARCHAR(6) NOT NULL,
-  mobileNo VARCHAR(10) NOT NULL,
+  mobileno VARCHAR(10) NOT NULL,
   email VARCHAR(100) NOT NULL,
-  userType VARCHAR(50) NOT NULL,
-  createdDate TIMESTAMP NOT NULL default CURRENT_DATE,
+  usertype VARCHAR(50) NOT NULL,
+  createddate TIMESTAMP  NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (users_id)
 );
 
 
 CREATE TABLE orders(
   order_id INTEGER DEFAULT nextval('orders_seq'),
-  movieDate DATE default CURRENT_DATE,
-  bookedDate TIMESTAMP NOT NULL,
+  moviedate DATE default CURRENT_DATE,
+  bookeddate TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
   paid bigint NOT NULL,
   users_id INTEGER NOT NULL,
   theatreshow_id INTEGER NOT NULL,
